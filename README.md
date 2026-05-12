@@ -1,3 +1,3 @@
 # verb
-spectral freeze reverb _ tetrahedral panning and verb room
+spectral freeze reverb _ tetrahedral panning and verb room/ aka tinkerbell
 //SuperCollider
