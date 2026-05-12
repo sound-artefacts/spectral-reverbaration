@@ -67,7 +67,7 @@ polytope=Spherical(1,az,el);
 
 material_p=Complex(1,polytope.x).theta*4;          ////reflection materiality
 material_m=polytope.rho;
-threshold=(polytope.rho*room)*mix;           /////trigger reflection threshold
+threshold=(polytope.rho*room)*mix.linexp(0,1,2,1);           /////trigger reflection threshold
 
 chain11 = chaindry.pvcollect(frames,
 {|mag, phase, index| [mag, phase]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1);
@@ -91,7 +91,8 @@ verb=IFFT(chain1);      ///spectral freeze on reflection
 n=n+1;
 }
 }).add;
-)}
+)
+}
 )
 
 	(
