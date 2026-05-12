@@ -96,8 +96,8 @@ n=n+1;
 )
 
 	(
-~synth=Synth.new(\verb,[\spread,0.5,\room,0.5,\mix,1]);
+~synth=Synth.new(\verb,[\spread,0.5,\room,0.5,\mix,0.01]);
 //s.record(numChannels:4,duration:(1*60)+60)
 )
 
-	~synth.set(\room,0.5,\mix,0.01);
+	~synth.set(\room,0.5,\mix,0.1);
