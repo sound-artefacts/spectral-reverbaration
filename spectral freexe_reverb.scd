@@ -65,7 +65,7 @@ az = (az+(2pi-(2pi/s))).wrap(pi.neg,pi);
 el = (el+(pi-(pi/s))).wrap(0.5pi.neg,0.5pi);
 polytope=Spherical(1,az,el);
 
-material_p=Complex(1,polytope.x).theta*4;          ////reflection materiality
+material_p=Complex(1,polytope.x).theta*2;          ////reflection materiality
 material_m=polytope.rho;
 threshold=(polytope.rho*room)*mix.linexp(0,1,2,1);           /////trigger reflection threshold
 
@@ -79,7 +79,7 @@ env=Decay2.kr(gate,0.01, decay) * mix;
 
 
 chain1 = PV_Freeze(chainwet.pvcollect(frames,
-{|mag, phase, index| [mag, phase]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1),gate);
+{|mag, phase, index| [mag*material_m, phase+material_p]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1),gate);
 
 verb=IFFT(chain1);      ///spectral freeze on reflection
 
@@ -96,8 +96,8 @@ n=n+1;
 )
 
 	(
-~synth=Synth.new(\verb,[\spread,0.05,\room,20,\mix,1]);
+~synth=Synth.new(\verb,[\spread,0.5,\room,0.5,\mix,1]);
 //s.record(numChannels:4,duration:(1*60)+60)
 )
 
-	~synth.set(\room,0.000000000001,\mix,1);
+	~synth.set(\room,0.5,\mix,0.01);
