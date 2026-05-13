@@ -51,7 +51,7 @@ i.linexp(0, steps-1, 0.18, 463).round};
 SynthDef.new(\verb, {
 arg spread,room=1,mix=0,fl=40;
 var chaindry,chainwet,follower;
-var frames=~fftsize, polytope, sig, in, chain, chain1,bins,reverfb,env,gate,dry,decay,chain11;
+var frames=~fftsize, polytope, sig, in, chain, chain1,bins,env,gate,dry,decay,chain11;
 var g=((1+5.sqrt)/2),s=(1+2.sqrt),az=0,el=0,n=0,verb,material_m,material_p,threshold,chainn;
 
 bins=~bins;
