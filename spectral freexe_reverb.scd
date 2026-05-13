@@ -101,4 +101,4 @@ n=n+1;
 //s.record(numChannels:4,duration:(1*60)+60)
 )
 
-	~synth.set(\room,1,\mix,0.8,\fl,40);
+	~synth.set(\room,1,\mix,0,\fl,40);
