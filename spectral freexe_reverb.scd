@@ -77,12 +77,12 @@ decay=(polytope.rho*room.linlin(0,1,1,2))*mix.linlin(0,1,1,2);
 threshold=(mix.linlin(0,1,1,0.001))/polytope.rho;  ////////trigger reflection threshold
 gate=(follower>threshold);   ///////trigger for spectral freeze and reverb decay envelope
 //env=Decay2.kr(gate,0.01, decay) * mix;
-env=EnvGen.kr(Env.perc(0.01,decay,mix),gate);
+env=EnvGen.kr(Env.perc(0.01,decay,1),gate);
 
 chain1 = PV_Freeze(chainwet.pvcollect(frames,
-{|mag, phase, index| [mag*material_m, phase+material_p]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1),gate);
+{|mag, phase, index| [mag*material_m, phase+material_p]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1),gate*env);
 
-verb=IFFT(chain1)*env;      ////////////////////////spectral freeze on reflection
+verb=IFFT(chain1);      ////////////////////////spectral freeze on reflection
 
 sig=(verb*mix)+(dry*mix.linlin(0,1,1,0));
 
