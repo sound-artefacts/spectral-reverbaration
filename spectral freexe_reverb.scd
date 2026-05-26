@@ -82,7 +82,7 @@ env=EnvGen.kr(Env.perc(0.01,decay,mix),gate);
 chain1 = PV_Freeze(chainwet.pvcollect(frames,
 {|mag, phase, index| [mag*material_m, phase+material_p]; }, frombin: ~nVals.[n], tobin: ~nVals.[n], zeroothers: 1),gate);
 
-verb=IFFT(chain1);      ////////////////////////spectral freeze on reflection
+verb=IFFT(chain1)*env;      ////////////////////////spectral freeze on reflection
 
 sig=(verb*mix)+(dry*mix.linlin(0,1,1,0));
 
